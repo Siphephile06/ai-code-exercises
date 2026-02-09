@@ -22,6 +22,9 @@ class TaskManager:
 
         task = Task(title, description, priority, due_date, tags)
         task_id = self.storage.add_task(task)
+        # Check if storage rejected the task due to duplicate.
+        if task_id is None:
+            return None
         return task_id
 
     def list_tasks(self, status_filter=None, priority_filter=None, show_overdue=False):
