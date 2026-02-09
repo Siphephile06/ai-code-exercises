@@ -64,7 +64,30 @@ class TaskStorage:
         except Exception as e:
             print(f"Error saving tasks: {e}")
 
+    def has_created_task_today(self, title):
+        """ 
+        Check if a task with the same title has been created today.
+        Returns true if there is a duplicate and false otherwise.
+        """
+        today = datetime.now().date()
+
+        for task in self.tasks.values():
+            # Get just the date part of created_at
+            task_creation_date = task.created_at.date()
+            # Compare title and creation date.
+            if task.title.lower() == title.lower and task_creation_date == today:
+                return True
+
+        return False
+
     def add_task(self, task):
+        """
+        Add a task to storage, but reject if a task with the same title 
+    was created today.
+    """
+        if self.has_task_created_today(task.title):
+            print(f"Error: A task titled {task.title} has already been created today")
+            return None
         self.tasks[task.id] = task
         self.save()
         return task.id
