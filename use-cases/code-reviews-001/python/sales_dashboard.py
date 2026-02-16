@@ -48,10 +48,11 @@ def generate_sales_dashboard(sales_data, output_file='sales_dashboard.html', tim
 
     # Create a figure with subplots
     fig = make_subplots(
-        rows=2, cols=2,
-        subplot_titles=("Sales by Period", "Sales by Product", "Sales by Region", "Top Products"),
+        rows=2, cols=3,
+        subplot_titles=("Sales by Period", "Sales by Product", "Sales by Region", "Top Products", "Bottom Products"),
         specs=[[{"type": "bar"}, {"type": "pie"}],
-               [{"type": "bar"}, {"type": "table"}]]
+               [{"type": "bar"}, {"type": "table"}]
+               [{"type": "table"}]]
     )
 
     # Add a bar chart for sales by period
@@ -82,6 +83,15 @@ def generate_sales_dashboard(sales_data, output_file='sales_dashboard.html', tim
             cells=dict(values=[top_products['product'], top_products['sales_amount']])
         ),
         row=2, col=2
+    )
+    # Add a table for bottom products
+    bottom_products = product_totals.sort_values('sales_amount', ascending=True).head(5)
+    fig.add_trace(
+        go.Table(
+            header=dict(values=["Product", "Sales Amount"]),
+            cells=dict(values=[bottom_products['product'], bottom_products['sales_amount']])
+        ),
+        row=2, col=3
     )
 
     # Update layout
