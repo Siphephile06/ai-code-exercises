@@ -58,8 +58,6 @@ if __name__ == "__main__":
             'name': f'Product {i}',
             'price': random.randint(5, 500)
         })
-        if len(product_list) == 100:
-            break
 
     # Measure execution time
     print(f"Finding product combinations for {len(product_list)} products")
