@@ -65,27 +65,38 @@ A utility class for file operations including reading, writing, and archiving. I
 Use this structure to document your findings during the exercise:
 
 ### Code Selection
-- Selected code: [Python/JavaScript/Java]
-- Brief description of what the code does
+- Selected code: Python
+- Code generates a HTML file which will be a sales dashboard. Specific values are taken and displayed in different graphs. Highlighting is added to those that are higher than the threshold.
 
 ### Prompt Results
-For each prompt:
-- Issues identified (list 3-5)
-- Unexpected insights (list 1-2)
-- Planned improvements (list 3)
+Problems given by each prompt:
+- First Prompt:
+   * No loggong.
+   * placement of imports.
+   * Limited error messages.
+- Second Prompt:
+   * My Syntax errors
+   * My logic after implementing an improvement.
+- Third Prompt:
+   * Basic Docstrings
+   * Comments
+- Unexpected insights was silent fails given ny the second prompt.
+- Planned improvements
+   * Logging
+   * place imports at the right place
+   * Add error messages
+   * Fix my added Errors :)
+   * Improve doctsrings and commensts
 
 ### Comparison of Prompts
-- Most valuable prompt and why
-- Types of issues found by multiple prompts
-- Types of issues found by only one prompt
-- Any contradictory feedback between prompts
+- Most valuable prompt was the second promt as it was able to help me grasp the codebase more clearly.
+- Type of issue found by multoiple prompts was empty charts being created.
+- Types of issues found by only one prompt was basic docstring.
 
 ### Implementation Plan
-- Top 3 improvements to implement
+- Top 3 improvements to implement is the docstrings, the comments on complex code and not creating empty charts.
 - How you would prioritize these changes
-- Additional dependencies or resources needed
 
 ### Workflow Integration
-- How you would integrate AI code review strategies into your normal workflow
-- Potential barriers to adoption
-- How these approaches might complement human code reviews
+- I would use AI strategies by asking it to guide me on errors and improvements befor moving on to my next phase of code.
+- These might complement human code reviews by thoroughness and intricisies that human code reviews might not have the insight on.
