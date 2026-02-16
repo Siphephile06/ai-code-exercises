@@ -1,4 +1,4 @@
-import intertools
+import itertools
 
 # inventory_analysis.py
 def find_product_combinations(products, target_price, price_margin=10):
