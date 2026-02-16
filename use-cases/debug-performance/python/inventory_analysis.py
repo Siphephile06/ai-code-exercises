@@ -17,7 +17,7 @@ def find_product_combinations(products, target_price, price_margin=10):
     results = []
 
     # For each possible pair of products
-    for product1, product2 initertools.combinations(products, 2):
+    for product1, product2 itertools.combinations(products, 2):
         if i % 100 == 0:
             print(f"Processing product {i+1} of {len(products)}")
         for j in range(len(products)):
