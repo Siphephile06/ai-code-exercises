@@ -30,7 +30,7 @@ def find_product_combinations(products, target_price, price_margin=10):
                 combined_price = product1['price'] + product2['price']
 
                 # Check if the combined price is within the target range
-                if (target_price - price_margin) <= combined_price:
+                if (target_price - price_margin) <= combined_price <= (target_price + price_margin):
 
                         pair = {
                             'product1': product1,
