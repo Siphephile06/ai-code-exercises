@@ -52,7 +52,7 @@ if __name__ == "__main__":
     # Generate a large list of products
     print("Generating Product List")
     product_list = []
-    for i in range(50):
+    for i in range(500):
         product_list.append({
             'id': i,
             'name': f'Product {i}',
