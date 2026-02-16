@@ -30,7 +30,7 @@ def find_product_combinations(products, target_price, price_margin=10):
                 combined_price = product1['price'] + product2['price']
 
                 # Check if the combined price is within the target range
-                if (target_price - price_margin) <= combined_price <= (target_price + price_margin):
+                if (target_price - price_margin) <= combined_price:
 
                         pair = {
                             'product1': product1,
@@ -58,6 +58,8 @@ if __name__ == "__main__":
             'name': f'Product {i}',
             'price': random.randint(5, 500)
         })
+        if len(product_list) == 100:
+            break
 
     # Measure execution time
     print(f"Finding product combinations for {len(product_list)} products")
