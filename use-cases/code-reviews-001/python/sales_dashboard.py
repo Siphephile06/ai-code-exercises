@@ -1,3 +1,8 @@
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import os
+
 def generate_sales_dashboard(sales_data, output_file='sales_dashboard.html', time_period='monthly', highlight_threshold=None):
     """
     Generate a sales dashboard from the provided data.
@@ -8,11 +13,6 @@ def generate_sales_dashboard(sales_data, output_file='sales_dashboard.html', tim
         time_period: monthly or quarterly aggregation
         highlight_threshold: threshold for highlighting values
     """
-    import pandas as pd
-    import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
-    import os
-
     # Load data
     if isinstance(sales_data, str):
         # Check if it's a CSV file
