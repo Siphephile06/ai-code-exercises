@@ -30,6 +30,8 @@ def generate_sales_dashboard(sales_data, output_file='sales_dashboard.html', tim
     for col in required_columns:
         if col not in df.columns:
             raise ValueError(f"Missing required column: {col}")
+        if len(df) == 0:
+            raise ValueError("Cannot generate dashboard: sales_data is empty (0 rows)")
 
     # Convert date to datetime
     df['date'] = pd.to_datetime(df['date'])
