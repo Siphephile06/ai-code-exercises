@@ -2,7 +2,7 @@
 def print_inventory_report(items):
     print("===== INVENTORY REPORT =====")
     # Error occurs in this loop - classic off-by-one error
-    for i in range(len(items) + 1):  # Notice the + 1 here
+    for i in range(len(items)):  # Notice the + 1 here
         print(f"Item {i+1}: {items[i]['name']} - Quantity: {items[i]['quantity']}")
     print("============================")
 
