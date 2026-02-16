@@ -51,8 +51,8 @@ def generate_sales_dashboard(sales_data, output_file='sales_dashboard.html', tim
         rows=2, cols=3,
         subplot_titles=("Sales by Period", "Sales by Product", "Sales by Region", "Top Products", "Bottom Products"),
         specs=[[{"type": "bar"}, {"type": "pie"}],
-               [{"type": "bar"}, {"type": "table"}]
-               [{"type": "table"}]]
+               [{"type": "bar"}, {"type": "table"}],
+               [{"type": "table"}, {"type: "pie"}]]
     )
 
     # Add a bar chart for sales by period
