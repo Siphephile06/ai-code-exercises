@@ -1,25 +1,5 @@
 from datetime import datetime
 
-
-def generate_sales_report(sales_data, report_type='summary', date_range=None,
-                         filters=None, grouping=None, include_charts=False,
-                         output_format='pdf'):
-    """
-    Generate a comprehensive sales report based on provided data and parameters.
-
-    Parameters:
-    - sales_data: List of sales transactions
-    - report_type: 'summary', 'detailed', or 'forecast'
-    - date_range: Dict with 'start' and 'end' dates
-    - filters: Dict of filters to apply
-    - grouping: How to group data ('product', 'category', 'customer', 'region')
-    - include_charts: Whether to include charts/visualizations
-    - output_format: 'pdf', 'excel', 'html', or 'json'
-
-    Returns:
-    - Report data or file path depending on output_format
-    """
-                           
 def validate_inputs(sales_data, report_type, date_range, output_format):
   """" Validate wether all the inputs meet the required information and standards."""
     if not sales_data or not isinstance(sales_data, list):
@@ -55,7 +35,8 @@ def filter_by_date_range(sales_data, date_range):
 
     return filtered_data
 
-    # Apply additional filters
+# Apply additional filters
+def apply_filters(sales_data, filters):
     if filters:
         for key, value in filters.items():
             if isinstance(value, list):
@@ -63,24 +44,10 @@ def filter_by_date_range(sales_data, date_range):
             else:
                 sales_data = [sale for sale in sales_data if sale.get(key) == value]
 
-    # Check if we have data after filtering
-    if not sales_data:
-        print("Warning: No data matches the specified criteria")
-        # Return empty report structure based on format
-        if output_format == 'json':
-            return {"message": "No data matches the specified criteria", "data": []}
-        else:
-            # For other formats, generate a minimal report file
-            return _generate_empty_report(report_type, output_format)
-    
+    return sales_data
 
-    # Calculate basic metrics
-    total_sales = sum(sale['amount'] for sale in sales_data)
-    avg_sale = total_sales / len(sales_data)
-    max_sale = max(sales_data, key=lambda x: x['amount'])
-    min_sale = min(sales_data, key=lambda x: x['amount'])
-
-    # Group data if specified
+# Group data if specified
+def group_sales(sales_data, grouping):
     grouped_data = {}
     if grouping:
         for sale in sales_data:
@@ -99,6 +66,51 @@ def filter_by_date_range(sales_data, date_range):
         # Calculate averages for each group
         for key in grouped_data:
             grouped_data[key]['average'] = grouped_data[key]['total'] / grouped_data[key]['count']
+    return grouped_data
+
+def generate_sales_report(sales_data, report_type='summary', date_range=None,
+                         filters=None, grouping=None, include_charts=False,
+                         output_format='pdf'):
+    """
+    Generate a comprehensive sales report based on provided data and parameters.
+
+    Parameters:
+    - sales_data: List of sales transactions
+    - report_type: 'summary', 'detailed', or 'forecast'
+    - date_range: Dict with 'start' and 'end' dates
+    - filters: Dict of filters to apply
+    - grouping: How to group data ('product', 'category', 'customer', 'region')
+    - include_charts: Whether to include charts/visualizations
+    - output_format: 'pdf', 'excel', 'html', or 'json'
+
+    Returns:
+    - Report data or file path depending on output_format
+    """
+    # Validate Inputs.
+    validate_inputs(sales_data, report_type, date_range, output_format)
+                           
+    # Apply data range filtering.
+    sales_data = filter_by_date_range(sales_data, date_range)
+                           
+    # Apply additional filters.
+    sales_data = apply_filters(sales_data, filters)
+
+    # Check if we have data after filtering
+    if not sales_data:
+        print("Warning: No data matches the specified criteria")
+        # Return empty report structure based on format
+        if output_format == 'json':
+            return {"message": "No data matches the specified criteria", "data": []}
+        else:
+            # For other formats, generate a minimal report file
+            return _generate_empty_report(report_type, output_format)
+    
+
+    # Calculate basic metrics
+    total_sales = sum(sale['amount'] for sale in sales_data)
+    avg_sale = total_sales / len(sales_data)
+    max_sale = max(sales_data, key=lambda x: x['amount'])
+    min_sale = min(sales_data, key=lambda x: x['amount'])
 
     # Generate report based on type
     report_data = {
@@ -122,6 +134,9 @@ def filter_by_date_range(sales_data, date_range):
             }
         }
     }
+
+    # Grouping
+    grouped_data = group_sales(sales_data, grouping) if grouping else {}
 
     # Add grouping data if applicable
     if grouping:
