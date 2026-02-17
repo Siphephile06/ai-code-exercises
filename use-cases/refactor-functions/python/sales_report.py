@@ -1,7 +1,7 @@
 from datetime import datetime
 
 def validate_inputs(sales_data, report_type, date_range, output_format):
-  """" Validate wether all the inputs meet the required information and standards."""
+    """ Validate wether all the inputs meet the required information and standards."""
     if not sales_data or not isinstance(sales_data, list):
         raise ValueError("Sales data must be a non-empty list")
 
@@ -90,7 +90,8 @@ def generate_sales_report(sales_data, report_type='summary', date_range=None,
     validate_inputs(sales_data, report_type, date_range, output_format)
                            
     # Apply data range filtering.
-    sales_data = filter_by_date_range(sales_data, date_range)
+    if date_range:
+      sales_data = filter_by_date_range(sales_data, date_range)
                            
     # Apply additional filters.
     sales_data = apply_filters(sales_data, filters)
