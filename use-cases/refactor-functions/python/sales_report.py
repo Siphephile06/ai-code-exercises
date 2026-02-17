@@ -20,7 +20,7 @@ def validate_inputs(sales_data, report_type, date_range, output_format):
 
         if start_date > end_date:
             raise ValueError("Start date cannot be after end date")
-  return True
+     return True
 
 # Filter sales data by date range
 def filter_by_date_range(sales_data, date_range):
