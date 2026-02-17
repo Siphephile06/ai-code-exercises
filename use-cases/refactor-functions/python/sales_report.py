@@ -19,7 +19,9 @@ def generate_sales_report(sales_data, report_type='summary', date_range=None,
     Returns:
     - Report data or file path depending on output_format
     """
-    # Validate input parameters
+                           
+def validate_inputs(sales_data, report_type, date_range, output_format):
+  """" Validate wether all the inputs meet the required information and standards."""
     if not sales_data or not isinstance(sales_data, list):
         raise ValueError("Sales data must be a non-empty list")
 
@@ -27,9 +29,8 @@ def generate_sales_report(sales_data, report_type='summary', date_range=None,
         raise ValueError("Report type must be 'summary', 'detailed', or 'forecast'")
 
     if output_format not in ['pdf', 'excel', 'html', 'json']:
-        raise ValueError("Output format must be 'pdf', 'excel', 'html', or 'json'")
-
-    # Process date range
+        raise ValueError("Output format must be 'pdf', 'excel', 'html', or 'json'") 
+      
     if date_range:
         if 'start' not in date_range or 'end' not in date_range:
             raise ValueError("Date range must include 'start' and 'end' dates")
@@ -39,15 +40,20 @@ def generate_sales_report(sales_data, report_type='summary', date_range=None,
 
         if start_date > end_date:
             raise ValueError("Start date cannot be after end date")
+  return True
 
-        # Filter sales data by date range
-        filtered_data = []
-        for sale in sales_data:
-            sale_date = datetime.strptime(sale['date'], '%Y-%m-%d')
-            if start_date <= sale_date <= end_date:
-                filtered_data.append(sale)
+# Filter sales data by date range
+def filter_by_date_range(sales_data, date_range):
+    start_date = datetime.strptime(date_range['start'], '%Y-%m-%d')
+    end_date = datetime.strptime(date_range['end'], '%Y-%m-%d')
 
-        sales_data = filtered_data
+    filtered_data = []
+    for sale in sales_data:
+        sale_date = datetime.strptime(sale['date'], '%Y-%m-%d')
+        if start_date <= sale_date <= end_date:
+            filtered_data.append(sale)
+
+    return filtered_data
 
     # Apply additional filters
     if filters:
@@ -66,6 +72,7 @@ def generate_sales_report(sales_data, report_type='summary', date_range=None,
         else:
             # For other formats, generate a minimal report file
             return _generate_empty_report(report_type, output_format)
+    
 
     # Calculate basic metrics
     total_sales = sum(sale['amount'] for sale in sales_data)
