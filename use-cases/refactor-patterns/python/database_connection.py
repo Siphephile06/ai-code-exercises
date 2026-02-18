@@ -75,7 +75,7 @@ class RedisConnection(DatabaseConnectionBase):
     def connect(self):
         # Redis connection code
         print(f"Redis Connection: {self.host}:{self.port}/{self.database}")
-        print("Connection Successful)
+        print("Connection Successful")
         return self.connection
         # In a real app, we would: self.connection = redis.Redis(...)
 
