@@ -5,9 +5,9 @@ from io import StringIO
 
 # Import the module to test
 sys.path.append('src')
-from database_connection import DatabaseConnection
+from database_connection import DatabaseConnectionFactory.create_connection
 
-class TestDatabaseConnection(unittest.TestCase):
+class TestDatabaseConnectionBase(unittest.TestCase):
     """Test cases for the DatabaseConnection class"""
     
     def setUp(self):
