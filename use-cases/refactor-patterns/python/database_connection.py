@@ -97,7 +97,7 @@ class DatabaseConnectionFactory:
 
 # Example usage
 # Creating different database connections with various configurations
-mysql_db = DatabaseConnection(
+mysql_db = DatabaseConnectionFactory.create_connection(
     db_type='mysql',
     host='localhost',
     port=3306,
@@ -108,7 +108,7 @@ mysql_db = DatabaseConnection(
 )
 mysql_db.connect()
 
-mongo_db = DatabaseConnection(
+mongo_db = DatabaseConnectionFactory.create_connection(
     db_type='mongodb',
     host='mongodb.example.com',
     port=27017,
