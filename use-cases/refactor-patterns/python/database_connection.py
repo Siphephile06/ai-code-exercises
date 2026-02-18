@@ -82,7 +82,7 @@ class RedisConnection(DatabaseConnectionBase):
 # Factory
 class DatabaseConnectionFactory:
     @staticmethod
-    def create_connection(db_tpye, **kwargs):
+    def create_connection(db_type, **kwargs):
         if db_type == "mysql":
             return MySQLConnection(**kwargs)
         elif db_type == "postgres":
