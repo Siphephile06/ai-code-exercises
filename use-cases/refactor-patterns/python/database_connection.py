@@ -2,10 +2,9 @@ from abc import ABC, abstractmethod
 
 # Base class
 class DatabaseConnectionBase(ABC):
-    def __init__(self, db_type, host, port, username, password, database,
+    def __init__(self, host, port, username, password, database,
                  use_ssl=False, connection_timeout=30, retry_attempts=3,
                  pool_size=5, charset='utf8'):
-        self.db_type = db_type
         self.host = host
         self.port = port
         self.username = username
