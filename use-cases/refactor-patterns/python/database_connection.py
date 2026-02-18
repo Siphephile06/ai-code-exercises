@@ -18,7 +18,7 @@ class DatabaseConnectionBase(ABC):
         self.charset = charset
         self.connection = None
 
-        @abstractmethod:
+        @abstractmethod
             def cennect(self):
                 pass
 
