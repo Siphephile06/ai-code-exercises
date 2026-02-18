@@ -77,8 +77,8 @@ mysql_db = DatabaseConnection(
 )
 mysql_db.connect()
 
-oracle_db = DatabaseConnection(
-    db_type='oracledb',
+mongo_db = DatabaseConnection(
+    db_type='mongodb',
     host='mongodb.example.com',
     port=27017,
     username='mongo_user',
@@ -87,4 +87,4 @@ oracle_db = DatabaseConnection(
     pool_size=10,
     retry_attempts=5
 )
-oracle_db.connect()
+mongo_db.connect()
