@@ -88,7 +88,7 @@ class DatabaseConnectionFactory:
         elif db_type == "postgres":
             return PostgresConnection(**kwargs)
         elif db_type == "mongodb":
-            return MongoDBConnection(**kwargs):
+            return MongoDBConnection(**kwargs)
         elif db_type == "redis":
             return RedisConnection(**kwargs)
         else:
