@@ -19,8 +19,8 @@ class DatabaseConnectionBase(ABC):
         self.connection = None
 
         @abstractmethod
-            def cennect(self):
-                pass
+        def connect(self):
+            pass
 
 # Subclass for each DB type.
                      
