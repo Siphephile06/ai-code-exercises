@@ -91,7 +91,7 @@ class DatabaseConnectionFactory:
         elif db_type == "redis":
             return RedisConnection(**kwargs)
         else:
-            raise ValueError(f"Unsupported database type{db_type}")
+            raise ValueError(f"Unsupported database type: {db_type}")
 
 
 # Example usage
