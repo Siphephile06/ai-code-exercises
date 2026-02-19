@@ -4,7 +4,7 @@ from unittest.mock import patch
 from io import StringIO
 
 # Import the module to test
-sys.path.append('src')
+sys.path.append('.')
 from database_connection import DatabaseConnectionFactory
 
 class TestDatabaseConnectionBase(unittest.TestCase):
