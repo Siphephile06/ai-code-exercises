@@ -84,7 +84,7 @@ class DatabaseConnectionFactory:
     def create_connection(db_type, **kwargs):
         if db_type == "mysql":
             return MySQLConnection(**kwargs)
-        elif db_type == "postgres" or "postgresql":
+        elif db_type in ("postgres", "postgresql"):
             return PostgresConnection(**kwargs)
         elif db_type == "mongodb":
             return MongoDBConnection(**kwargs)
