@@ -3,7 +3,7 @@ from unittest.mock import patch
 from io import StringIO
 
 # Import the module to test
-from database_connection import DatabaseConnectionFactory
+from python.database_connection import DatabaseConnectionFactory
 
 class TestDatabaseConnectionBase(unittest.TestCase):
     """Test cases for the DatabaseConnection class"""
