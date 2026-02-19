@@ -50,7 +50,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
     
     def test_mysql_connection_string(self):
         """Test MySQL connection string generation"""
-        conn = DatabaseConnection(**self.mysql_config)
+        conn = DatabaseConnectionFactory.create_connection(**self.mysql_config)
         
         # Capture stdout to verify the connection string
         with patch('sys.stdout', new=StringIO()) as fake_out:
@@ -63,7 +63,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_mysql_connection_with_ssl(self):
         """Test MySQL connection with SSL enabled"""
-        conn = DatabaseConnection(**self.mysql_config, use_ssl=True)
+        conn = DatabaseConnectionFactory.create_connection(**self.mysql_config, use_ssl=True)
         
         with patch('sys.stdout', new=StringIO()) as fake_out:
             conn.connect()
@@ -73,7 +73,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_postgresql_connection_string(self):
         """Test PostgreSQL connection string generation"""
-        conn = DatabaseConnection(**self.postgres_config)
+        conn = DatabaseConnectionFactory.create_connection(**self.postgres_config)
         
         with patch('sys.stdout', new=StringIO()) as fake_out:
             conn.connect()
@@ -83,7 +83,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_postgresql_connection_with_ssl(self):
         """Test PostgreSQL connection with SSL enabled"""
-        conn = DatabaseConnection(**self.postgres_config, use_ssl=True)
+        conn = DatabaseConnectionFactory.create_connection(**self.postgres_config, use_ssl=True)
         
         with patch('sys.stdout', new=StringIO()) as fake_out:
             conn.connect()
@@ -93,7 +93,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_mongodb_connection_string(self):
         """Test MongoDB connection string generation"""
-        conn = DatabaseConnection(**self.mongodb_config)
+        conn = DatabaseConnectionFactory.create_connection(**self.mongodb_config)
         
         with patch('sys.stdout', new=StringIO()) as fake_out:
             conn.connect()
@@ -105,7 +105,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_mongodb_connection_with_custom_options(self):
         """Test MongoDB connection with custom retry and pool options"""
-        conn = DatabaseConnection(**self.mongodb_config, retry_attempts=10, pool_size=20)
+        conn = DatabaseConnectionFactory.create_connection(**self.mongodb_config, retry_attempts=10, pool_size=20)
         
         with patch('sys.stdout', new=StringIO()) as fake_out:
             conn.connect()
@@ -116,7 +116,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_redis_connection_string(self):
         """Test Redis connection string generation"""
-        conn = DatabaseConnection(**self.redis_config)
+        conn = DatabaseConnectionFactory.create_connection(**self.redis_config)
         
         with patch('sys.stdout', new=StringIO()) as fake_out:
             conn.connect()
@@ -126,7 +126,7 @@ class TestDatabaseConnectionBase(unittest.TestCase):
         
     def test_unsupported_database_type(self):
         """Test that an unsupported database type raises a ValueError"""
-        conn = DatabaseConnection(
+        conn = DatabaseConnectionFactory.create_connection(
             db_type='unsupported',
             host='test.example.com',
             port=1234,
