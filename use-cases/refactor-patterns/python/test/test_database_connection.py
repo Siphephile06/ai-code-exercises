@@ -1,10 +1,8 @@
-import sys
 import unittest
 from unittest.mock import patch
 from io import StringIO
 
 # Import the module to test
-sys.path.append('src')
 from database_connection import DatabaseConnectionFactory
 
 class TestDatabaseConnectionBase(unittest.TestCase):
