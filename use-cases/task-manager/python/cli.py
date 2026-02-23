@@ -2,7 +2,7 @@
 import argparse
 from datetime import datetime
 from app import TaskManager
-from .models import TaskPriority, TaskStatus
+from models import TaskPriority, TaskStatus
 
 def format_task(task):
     status_symbol = {
