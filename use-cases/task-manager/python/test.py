@@ -30,7 +30,7 @@ class TestCreateCommand(unittest.TestCase):
     "-u", "2026-02-024",
     "-t", "work,urgent"
     ])
-    self.assertIn("Created Task with ID: 1234adcc", output)
+    self.assertIn("Created task with ID: 1234adcc", output)
 
 if __name__ == "__main__":
     unittest.main()
