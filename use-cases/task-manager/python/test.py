@@ -1,0 +1,36 @@
+import sys
+import unittest
+from io import StringIO
+from unittest.mock import patch
+import task_manager.cli as cli
+
+def run_cli(args):
+  """Helper to run CLI with given args and capture stdout"""
+  sys.argv = ["cli.py"] + args
+  buffer = StringIO
+  with patch("sys.stdout", buffer):
+    try:
+      cli.main()
+    except SystemExit:
+      # argparse calls sys.exit() on errors
+      pass
+  return buffer.getvalue().strip()
+
+
+class TestCreateCommand(unittest.TestCase):
+  """Class to test the create command."""
+  @patch(task_manager.cli.TaskManager.create_task", return_value="1234adcc")
+  def test_create_succes(self, mock_create):
+    output = run_cli([
+    "create", "New Task"
+    "-d", "New Description"
+    "-p", 3
+    "-u", "2026-02-024"
+    "-t", "work,urgent"
+    ])
+    self.assertIn("Created Task with ID: 1234adcc", output)
+
+if __name__ == "__main__":
+    unittest.main()
+  
+      
