@@ -71,4 +71,5 @@ python cli.py stats
 ### Run the Tests
 
 cd python
+
 python test.py
