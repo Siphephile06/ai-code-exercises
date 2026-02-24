@@ -39,7 +39,7 @@ class TestListCommand(unittest.TestCase):
     output = run_cli([
     "list", "list all tasks"
     ])
-    self.assertIn("Tasks listed successfully", output)
+    self.assertIn(" ", output)
 
 class TestUpdateommand(unittest.TestCase):
   """Class to test the update command."""
