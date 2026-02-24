@@ -70,6 +70,8 @@ python cli.py stats
 
 ### Run the Tests
 
+```bash
 cd python
 
 python test.py
+```
