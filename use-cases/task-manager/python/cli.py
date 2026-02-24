@@ -99,7 +99,7 @@ def main():
             for task in tasks:
                 print(format_task(task))
                 print("-" * 50)
-                print('Tasks listed successfully')
+            print('Tasks listed successfully')
         else:
             print("No tasks found matching the criteria.")
 
