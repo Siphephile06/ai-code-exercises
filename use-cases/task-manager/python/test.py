@@ -102,7 +102,7 @@ class TestDetailsCommand(unittest.TestCase):
 
 class TestDeleteCommand(unittest.TestCase):
   """Class to test the deleeting a tag"""
-  @patch("cli.TaskManager.delete_tag", return_value="deleted")
+  @patch("cli.TaskManager.delete_task", return_value="deleted")
   def test_delete_success(self, mock_create):
     output = run_cli([
       "task_id", "1234adcc"
