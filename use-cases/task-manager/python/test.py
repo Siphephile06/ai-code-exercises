@@ -39,7 +39,7 @@ class TestListCommand(unittest.TestCase):
     output = run_cli([
     "list", "list all tasks"
     ])
-    self.assertIn("Tasks listed successfully")
+    self.assertIn("Tasks listed successfully", output)
 
 if __name__ == "__main__":
     unittest.main()
