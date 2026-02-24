@@ -69,7 +69,7 @@ class TestDue_DateCommand(unittest.TestCase):
       "task_id", "1234adcc",
       "due_date", "2026-03-01"
     ])
-    self.asserIn("", output)
+    self.assertIn("", output)
     
 if __name__ == "__main__":
     unittest.main()
