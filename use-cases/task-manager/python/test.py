@@ -32,6 +32,15 @@ class TestCreateCommand(unittest.TestCase):
     ])
     self.assertIn("Created task with ID: 1234adcc", output)
 
+class TestListCommand(unittest.TestCase):
+  """Class to test the list command."""
+  @patch("cli.TaskManager.list_tasks", return_value="list")
+  def test_list_success(self, mock_create):
+    output = run_cli([
+    "list", "list all tasks"
+    ])
+    self.assertIn("Tasks listed successfully")
+
 if __name__ == "__main__":
     unittest.main()
   
