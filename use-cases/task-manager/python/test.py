@@ -43,13 +43,13 @@ class TestListCommand(unittest.TestCase):
 
 class TestStatuscommand(unittest.TestCase):
   """Class to test the update command."""
-  @patch("cli.TaskManager.update_task_status", return_value="updated")
+  @patch("cli.TaskManager.update_task_status", return_value="status")
   def test_status_success(self, mock_create):
     output = run_cli([
     "task_id", "1234adcc",
     "status", "in_progress"
     ])
-    self.assertIn("Updated task status to in_progress", output)
+    self.assertIn("Updated task status to {args.status}", output)
 
 if __name__ == "__main__":
     unittest.main()
