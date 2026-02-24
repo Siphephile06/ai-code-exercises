@@ -2,6 +2,7 @@ import sys
 import unittest
 from io import StringIO
 from unittest.mock import patch
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 import task_manager.cli as cli
 
 def run_cli(args):
