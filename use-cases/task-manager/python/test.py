@@ -43,7 +43,7 @@ class TestListCommand(unittest.TestCase):
 
 class TestStatuscommand(unittest.TestCase):
   """Class to test the update command."""
-  @patch("cli.TaskManager.status", return_value="updated")
+  @patch("cli.TaskManager.update_task_status", return_value="updated")
   def test_status_success(self, mock_create):
     output = run_cli([
     "task_id", "1234adcc",
