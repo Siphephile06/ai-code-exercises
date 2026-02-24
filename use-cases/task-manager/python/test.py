@@ -90,6 +90,26 @@ class TestRemoveTagCommand(unittest.TestCase):
       "tag", "done"
     ])
     self.assertIn("", output)
+
+class TestDetailsCommand(unittest.TestCase):
+  """Class to test getting the details of a task"""
+  @patch("cli.TaskManager.get_task_details", return_value="details")
+  def test_details_success(self, mock_create):
+    output = run_cli([
+      "task_id", "1234adcc"
+    ])
+    self.assertIn("", output)
+
+class TestDeleteCommand(unittest.TestCase):
+  """Class to test the deleeting a tag"""
+  @patch("cli.TaskManager.delete_tag", return_value="deleted")
+  def test_delete_success(self, mock_create):
+    output = run_cli([
+      "task_id", "1234adcc"
+    ])
+    self.assertIn("", output)
+
+
     
 if __name__ == "__main__":
     unittest.main()
