@@ -51,7 +51,7 @@ class TestStatusCommand(unittest.TestCase):
     ])
     self.assertIn("", output)
 
-class TestPriorityCommand(unittest.Testcase):
+class TestPriorityCommand(unittest.TestCase):
   """Class to test update priority command"""
   @patch("cli.TaskManager.update_task_priority", return_value="priority")
   def test_update_priority_success(self, mock_create):
