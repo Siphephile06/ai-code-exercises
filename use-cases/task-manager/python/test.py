@@ -70,6 +70,26 @@ class TestDue_DateCommand(unittest.TestCase):
       "due_date", "2026-03-01"
     ])
     self.assertIn("", output)
+
+class TestTagCommand(unittest.TestCase):
+  """Class to test tag management"""
+  @patch("cli.TaskManager.add_tag_to_task", return_value="added_tag")
+  def test_tag_success(self, mock_create):
+    output = run_cli([
+      "task_id", "1234adcc",
+      "tag", "done"
+    ])
+    self.assertIn("", output)
+
+class TestRemoveTagCommand(unittest.TestCase):
+  """class to test removing a tag"""
+  @patch("cli.TaskManager.remove_tag_from_task", return_value="tag_removed")
+  def test_untag_success(self, mock_create):
+    output = run_cli([
+      "task_id", "1234adcc"
+      "tag", "done"
+    ])
+    self.assertIn("", output)
     
 if __name__ == "__main__":
     unittest.main()
