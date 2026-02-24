@@ -41,9 +41,9 @@ class TestListCommand(unittest.TestCase):
     ])
     self.assertIn("", output)
 
-class TestUpdateommand(unittest.TestCase):
+class TestStatuscommand(unittest.TestCase):
   """Class to test the update command."""
-  @patch("cli.TaskManager.update_tasks", return_value="updated")
+  @patch("cli.TaskManager.status", return_value="updated")
   def test_status_success(self, mock_create):
     output = run_cli([
     "task_id", "1234adcc",
