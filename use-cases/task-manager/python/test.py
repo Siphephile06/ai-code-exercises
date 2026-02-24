@@ -9,7 +9,7 @@ import task_manager.cli as cli
 def run_cli(args):
   """Helper to run CLI with given args and capture stdout"""
   sys.argv = ["cli.py"] + args
-  buffer = StringIO
+  buffer = StringIO()
   with patch("sys.stdout", buffer):
     try:
       cli.main()
