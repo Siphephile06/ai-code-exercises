@@ -22,10 +22,10 @@ class TestCreateCommand(unittest.TestCase):
   @patch("task_manager.cli.TaskManager.create_task", return_value="1234adcc")
   def test_create_succes(self, mock_create):
     output = run_cli([
-    "create", "New Task"
-    "-d", "New Description"
-    "-p", 3
-    "-u", "2026-02-024"
+    "create", "New Task",
+    "-d", "New Description",
+    "-p", 3,
+    "-u", "2026-02-024",
     "-t", "work,urgent"
     ])
     self.assertIn("Created Task with ID: 1234adcc", output)
