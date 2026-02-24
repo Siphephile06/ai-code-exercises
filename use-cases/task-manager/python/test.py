@@ -26,7 +26,7 @@ class TestCreateCommand(unittest.TestCase):
     output = run_cli([
     "create", "New Task",
     "-d", "New Description",
-    "-p", 3,
+    "-p", "3",
     "-u", "2026-02-024",
     "-t", "work,urgent"
     ])
