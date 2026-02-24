@@ -41,16 +41,36 @@ class TestListCommand(unittest.TestCase):
     ])
     self.assertIn("", output)
 
-class TestStatuscommand(unittest.TestCase):
-  """Class to test the update command."""
+class TestStatusCommand(unittest.TestCase):
+  """Class to test the update status command."""
   @patch("cli.TaskManager.update_task_status", return_value="status")
-  def test_status_success(self, mock_create):
+  def test_update_status_success(self, mock_create):
     output = run_cli([
     "task_id", "1234adcc",
     "status", "in_progress"
     ])
     self.assertIn("", output)
 
+class TestPriorityCommand(unittest.Testcase):
+  """Class to test update priority command"""
+  @patch("cli.TaskManager.update_task_priority", return_value="priority")
+  def test_update_priority_success(self, mock_create):
+    output = run_cli([
+      "task_id", "1234adcc",
+      "priority", "2"
+    ])
+    self.assertIn("", output)
+
+class TestDue_DateCommand(unittest.TestCase):
+  """Class to test update due date command"""
+  @patch("cli.TaskManager.update_task_due_date", return_value="due_date")
+  def test_update_due_date_success(self, mock_create):
+    output = run_cli([
+      "task_id", "1234adcc",
+      "due_date", "2026-03-01"
+    ])
+    self.asserIn("", output)
+    
 if __name__ == "__main__":
     unittest.main()
   
