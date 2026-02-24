@@ -19,7 +19,7 @@ def run_cli(args):
 
 class TestCreateCommand(unittest.TestCase):
   """Class to test the create command."""
-  @patch(task_manager.cli.TaskManager.create_task", return_value="1234adcc")
+  @patch("task_manager.cli.TaskManager.create_task", return_value="1234adcc")
   def test_create_succes(self, mock_create):
     output = run_cli([
     "create", "New Task"
