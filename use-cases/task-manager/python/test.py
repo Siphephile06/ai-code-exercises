@@ -46,7 +46,7 @@ class TestUpdateommand(unittest.TestCase):
   @patch("cli.TaskManager.update_tasks", return_value="updated")
   def test_status_success(self, mock_create):
     output = run_cli([
-    "task_id, "1234adcc",
+    "task_id", "1234adcc",
     "status", "in_progress"
     ])
     self.assertIn("Updated task status to in_progress", output)
